@@ -1,0 +1,89 @@
+[almalinux@xianglai ~]$ #include <stdlib.h>[200~gcc hw02_axpy.c -o hw02_axpy -lm~
+[almalinux@xianglai ~]$ pwd
+ls
+/home/almalinux
+hello  hello.c
+[almalinux@xianglai ~]$ mkdir -p ~/homework02
+cd ~/homework02
+[almalinux@xianglai homework02]$ nano hw02_axpy.c
+-bash: nano: command not found
+[almalinux@xianglai homework02]$ cat > hw02_axpy.c <<'EOF'
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main(int argc, char *argv[])
+{
+    if (argc != 5)
+    {
+        printf("Usage: %s N a x y\n", argv[0]);
+        printf("Example: %s 10 3 0.1 7.1\n", argv[0]);
+        return 1;
+    }
+
+    long long N = atoll(argv[1]);
+    double a = atof(argv[2]);
+    double xval = atof(argv[3]);
+    double yval = atof(argv[4]);
+
+    if (N <= 0)
+    {
+        printf("Error: N must be positive.\n");
+        return 1;
+    }
+
+    double *x = (double *)malloc(N * sizeof(double));
+    double *y = (double *)malloc(N * sizeof(double));
+    double *d = (double *)malloc(N * sizeof(double));
+
+    if (x == NULL || y == NULL || d == NULL)
+    {
+        printf("Memory allocation failed for N = %lld\n", N);
+        free(x);
+        free(y);
+        free(d);
+        return 1;
+    }
+
+    for (long long i = 0; i < N; i++)
+    {
+        x[i] = xval;
+        y[i] = yval;
+    }
+
+    for (long long i = 0; i < N; i++)
+    {
+        d[i] = a * x[i] + y[i];
+    }
+
+    double expected = a * xval + yval;
+    double tol = 1e-12;
+EOF return 0;rintf("d[%lld] = %.17g\n", i, d[i]);in tolerance %.1e\n", tol);
+[almalinux@xianglai homework02]$ gcc hw02_axpy.c -o hw02_axpy -lm
+[almalinux@xianglai homework02]$ ./hw02_axpy 10 3 0.1 7.1
+N = 10
+a = 3, x = 0.10000000000000001, y = 7.0999999999999996
+expected = 7.3999999999999995
+All elements passed the test within tolerance 1.0e-12
+Vector d:
+d[0] = 7.3999999999999995
+d[1] = 7.3999999999999995
+d[2] = 7.3999999999999995
+d[3] = 7.3999999999999995
+d[4] = 7.3999999999999995
+d[5] = 7.3999999999999995
+d[6] = 7.3999999999999995
+d[7] = 7.3999999999999995
+d[8] = 7.3999999999999995
+d[9] = 7.3999999999999995
+[almalinux@xianglai homework02]$ ./hw02_axpy 1000000 3 0.1 7.1
+N = 1000000
+a = 3, x = 0.10000000000000001, y = 7.0999999999999996
+expected = 7.3999999999999995
+All elements passed the test within tolerance 1.0e-12
+[almalinux@xianglai homework02]$ ./hw02_axpy 100000000 3 0.1 7.1
+N = 100000000
+a = 3, x = 0.10000000000000001, y = 7.0999999999999996
+expected = 7.3999999999999995
+All elements passed the test within tolerance 1.0e-12
+[almalinux@xianglai homework02]$ 

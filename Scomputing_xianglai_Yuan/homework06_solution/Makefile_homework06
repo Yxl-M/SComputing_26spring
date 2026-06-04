@@ -1,0 +1,15 @@
+CC = h5cc
+CFLAGS = -O2 -Wall -Wextra
+TARGET = homework06_daxpy_chunks
+SRC = homework06_daxpy_chunks.c
+
+all: $(TARGET)
+
+$(TARGET): $(SRC)
+	$(CC) $(CFLAGS) -o $(TARGET) $(SRC) -lm
+
+run: $(TARGET)
+	./$(TARGET) input.conf
+
+clean:
+	rm -f $(TARGET) homework06_output.h5
