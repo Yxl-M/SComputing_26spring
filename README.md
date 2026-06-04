@@ -1,1 +1,0 @@
-# SComputing_26spring
