@@ -1,0 +1,24 @@
+Dynamic-memory version
+N = 10
+a = 3, x = 0.10000000000000001, y = 7.0999999999999996
+Expected a*x + y = 7.3999999999999995
+Memory used by three double vectors = 0.000 GB
+Test: PASSED
+d[0] = 7.3999999999999995
+d[1] = 7.3999999999999995
+d[2] = 7.3999999999999995
+d[3] = 7.3999999999999995
+d[4] = 7.3999999999999995
+d[5] = 7.3999999999999995
+d[6] = 7.3999999999999995
+d[7] = 7.3999999999999995
+d[8] = 7.3999999999999995
+d[9] = 7.3999999999999995
+
+Specific test:
+a = 3, x = 0.10000000000000001, y = 7.0999999999999996
+Computed a*x + y = 7.3999999999999995
+Mathematical expected value = 7.4
+Absolute error from 7.4 = 8.8817841970012523e-16
+Exact comparison result == 7.4: false
+Tolerance comparison: PASSED
